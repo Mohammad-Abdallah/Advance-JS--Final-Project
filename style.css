@@ -1,0 +1,400 @@
+:root {
+    --main-color: rgb(245, 245, 245);
+}
+
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    background: black;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+
+/* start header animation */
+
+.animationName {
+    position: relative;
+    font-size: 60px;
+    color: var(--main-color); /* White text color */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Subtle glowing effect */
+    white-space: nowrap; /* Prevent line breaks */
+    overflow: hidden; /* Hide overflowing content */
+    animation: shimmer 1.5s infinite; /* Shimmering effect */
+}
+
+.name {
+    font-family: cursive;
+    display: inline-block; /* Allows the typing effect */
+    overflow: hidden; 
+    animation: typing 5s forwards infinite; /* Typing animation */
+    letter-spacing: 20px;
+}
+
+@keyframes typing {
+    0% {
+        width: 0; 
+    }
+    90% {
+        width: 15ch;
+    }
+    100% {
+        width: 15ch; /* Maintain width for bounce effect */
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 
+                     0 0 20px rgba(255, 255, 255, 0.7); /* Starting shimmer */
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1), 
+                     0 0 30px rgba(255, 255, 255, 0.9); /* Brightest shimmer */
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 
+                     0 0 20px rgba(255, 255, 255, 0.7); /* Back to starting shimmer */
+    }
+}
+
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 60px; /* Height matching font size */
+    background-color: #ffffff; /* Cursor color */
+    animation: blink 0.75s step-end infinite; /* Cursor blinking */
+    position: absolute; /* Positioning cursor */
+    right: 0; /* Align to right of the text */
+    top: 0; /* Align to top of the text */
+}
+
+@keyframes blink {
+    0% {
+        width: 0; 
+    }
+    50% {
+        background-color: transparent; /* Blink effect */
+    }
+    100% {
+        width: 15ch; /* Maintain width for bounce effect */
+    }
+}
+
+/* end header animation */
+
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: 16% 35% 35%; 
+    gap: 10%;
+    height: 100vh; 
+    overflow-x: hidden;
+
+    .navigationBar {
+        position: fixed; 
+        height: 100vh;
+        width: 16%;
+        top: 0;
+        left: 0;
+        z-index: 999; 
+        padding: 0; 
+        background-color: black;
+        border-right:  1px solid #424242;
+    
+        .logo {
+            font-family: cursive;
+            font-size: 28px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            padding: 30px 10px;
+    
+            .text {
+                color: var(--main-color);
+            }
+
+            .icon {
+                display: none;
+                color: var(--main-color);
+            }
+        }
+    
+        ul {
+            padding: 10px;
+    
+            li {
+                padding-bottom: 10px;
+                a {
+                    display: flex;
+                    align-items: center;
+                    font-size: 16px;
+                    color: var(--main-color);
+                    border-radius: 6px;
+                    padding: 13px;
+                    i {
+                        font-size: 25px;
+                        margin-right: 10px;
+                    }
+                }
+                a:hover {
+                    background-color: #42424255;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 992px) {
+        .navigationBar {
+            width: 58px;
+            padding: 10px;
+            
+            .logo {
+                padding: 30px 0px;
+                .text {
+                    display: none;
+                }
+                .icon {
+                    display: block;
+                }
+            }
+        }
+        .navigationBar ul li {
+            display: flex;
+            justify-content: center;
+        }
+        .navigationBar ul li a span {
+          display: none;
+        }
+
+        .navigationBar ul li a b {
+            display: none;
+        }
+
+        .navigationBar ul li img {
+            width: fit-content;
+        }
+      }
+
+
+    .containerMainContent {
+        grid-column: 2;
+    }
+
+
+    .profile {
+        grid-column: 3;
+
+        .userContainer {
+            margin: 20px 0;
+            a {
+                display: block;
+                width: fit-content;
+                cursor: pointer;
+                padding-bottom: 10px;
+                .content {
+                    display: flex;
+                    align-items: center;
+                }
+                img {
+                    width: 50px;
+                    height: 50px;
+                    margin-right: 10px;
+                }
+                .username {
+                    p {
+                        margin: 0;
+                        color: var(--main-color);
+                    }
+                    h6 {
+                        color: #818181;
+                        font-size: 15px;
+                    }
+                }
+            }
+            .paragraph {
+                padding: 30px 0 0;
+                color: #a8a8a8;
+            }
+
+            .users {
+                height: 300px;
+                overflow-y: scroll;
+            }
+
+            .links {
+                display: flex;
+                margin: 30px 0 0;
+                a {
+                    color: #737373;
+                    font-size: 13px;
+                    padding-right: 4px;
+                }
+                a:hover {
+                    color: #a8a8a8;
+                    text-decoration: underline;
+                }
+            }
+
+            .owner {
+                p {
+                    color: #737373;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+}
+
+
+/* buttons */
+
+.login-logout {
+    background-color: #262626; 
+    display: flex;
+    flex-direction: column; 
+    position: absolute; 
+    top: 110%; 
+    left: 20%; 
+    width: 70%; 
+    height: 200%; 
+    padding: 10px; 
+    border-radius: 10px;
+    display: none;
+}
+
+.login-logout.openMenu {
+    display: block;
+}
+
+#logged-in-div {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    position: absolute;
+    top: 10%;
+}
+
+
+.buttons {
+    background-color: #262626; 
+    display: flex;
+    flex-direction: column; 
+    position: absolute; 
+    top: 90%; 
+    right: 5%; 
+    width: 35%; 
+    max-height: 110%; 
+    padding: 10px; 
+    border-radius: 10px;
+    visibility: hidden;
+}
+
+.buttons.menu {
+    visibility: visible;
+}
+
+.edit {
+    background-color: transparent;
+    border: none; 
+    border-bottom: 1px solid  #555454; 
+    color: #f0f0f0 ; 
+    margin-bottom: 10px; 
+    width: 100%; 
+    padding-bottom: 5px; 
+}
+
+.delete {
+    background-color: transparent; 
+    border: none; 
+    color: #ef0909 ; 
+    width: 100%;
+
+}
+
+.edit:hover , 
+.delete:hover {
+    background-color: #424242;
+    border-radius: 10px;
+}
+/*---- //-----buttons----- //---*/
+
+
+
+
+
+/* ========== LOADER STYLES ========= */
+        
+.lds-heart,
+.lds-heart div,
+.lds-heart div:after,
+.lds-heart div:before {
+  box-sizing: border-box;
+}
+.lds-heart {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  transform: rotate(45deg);
+  transform-origin: 40px 40px;
+}
+.lds-heart div {
+  top: 28px;
+  left: 28px;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: red;
+  animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.lds-heart div:after,
+.lds-heart div:before {
+  content: " ";
+  position: absolute;
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: red;
+}
+.lds-heart div:before {
+  left: -24px;
+  border-radius: 50% 0 0 50%;
+}
+.lds-heart div:after {
+  top: -24px;
+  border-radius: 50% 50% 0 0;
+}
+@keyframes lds-heart {
+  0% {
+    transform: scale(0.95);
+  }
+  5% {
+    transform: scale(1.1);
+  }
+  39% {
+    transform: scale(0.85);
+  }
+  45% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+        /* ==========// LOADER STYLES //========= */
+
+        
